@@ -1,9 +1,9 @@
-import './Search.css'
+import './Recipe.css'
 
-export default function Search() {
+export default function Recipe() {
     return(
         <div>
-            Search
+            Recipe
         </div>
     )
 }
