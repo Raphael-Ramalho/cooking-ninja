@@ -14,7 +14,7 @@ export default function Home() {
     setIsPending(true)
 
     projectFirestore.collection('recipes').get().then((snapshot)=>{
-      // console.log(snapshot)
+      // console.log('snapshot: ',snapshot)
       if(snapshot.empty){
         setError('No recipes to load')
         setIsPending(false)
@@ -24,6 +24,7 @@ export default function Home() {
           results.push({id: doc.id, ...doc.data()})
         })
         setData(results)
+        // console.log('results: ',results)
         setIsPending(false)
       }
     }).catch(err => {
