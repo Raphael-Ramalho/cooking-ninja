@@ -21,11 +21,15 @@ export default function Home() {
       } else{
         let results = []
         snapshot.docs.forEach(doc => {
-          console.log(doc)
+          results.push({id: doc.id, ...doc.data()})
         })
+        setData(results)
+        setIsPending(false)
       }
+    }).catch(err => {
+      setError(err.message)
+      setIsPending(false)
     })
-
   },[])
 
   return (
