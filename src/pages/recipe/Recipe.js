@@ -19,8 +19,15 @@ export default function Recipe() {
     setIsPending(true)
     projectFirestore.collection('recipes').doc(id).get().then((doc)=>{
       console.log(doc)
+      if(doc.exists){
+        setIsPending(false)
+        setRecipe(doc.data())
+      } else {
+        setIsPending(false)
+        setError('could not find that recipe')
+      }
     })
-  },[])
+  },[id])
 
   return (
     <div className={`recipe ${mode}`}>
